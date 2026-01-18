@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class User{
@@ -11,7 +16,7 @@ public class User{
     
     //Objects
     private Scanner scn = new Scanner(System.in);
-    UI ui = new UI();
+    private UI ui = new UI();
     
     public User(){
         
@@ -41,5 +46,21 @@ public class User{
         }
     }
 
-    
+    public void changeStatus(boolean isEmployed){
+        employed = isEmployed;
+        System.out.println("New(1) Notification!");
+        String termination = "\nJob successfully terminated.";
+        addNotifs(termination);
+    }
+
+        public void addNotifs(String message){
+        Path filePath = Paths.get("notifications.txt"); 
+
+        try {
+            Files.writeString(filePath, message, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }

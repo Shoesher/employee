@@ -3,6 +3,7 @@ public class Main
 	public static void main(String[] args) {
         UI ui = new UI();
 		User user = new User();
+        Dashboard dash = new Dashboard();
 
         //Setup 
         ui.welcome();
@@ -11,8 +12,7 @@ public class Main
 		user.getUserInfo();
 
         //Dashboard
-        ui.divider();
-        ui.dashboard();
+        dash.appManager();
 
 	}
 }
