@@ -197,7 +197,7 @@ public class Jobs {
                 double deduction = baseSalary*declineRate;
                 baseSalary -= deduction;
             }
-            wages.add(baseSalary);
+            wages.add(baseSalary); 
         }
         double[] salaries = wages.stream().mapToDouble(Double::doubleValue).toArray();;
         insertionSort(salaries);
@@ -261,54 +261,43 @@ public class Jobs {
         return minValue;
     }
 
-    //Loading job cards
     public void loadJobs(){
         ui.divider();
         ui.job();
-        System.out.println("Enter 1. to apply for position 1");
-        System.out.println("Enter 2. to apply for position 2");
-        System.out.println("Enter 3. to apply for position 3");
-        System.out.println("Enter 0. to return to the dashboard");
-
+        
+        // We store the jobs generated so we can "pick" one
+        ArrayList<String> jobListings = new ArrayList<>();
+        
+        System.out.println("0. Return to Dashboard");
         for(int i=0; i < 3; i++){
-            createJob();
+            // Updated createJob to return the string so we can track what the user picked
+            jobListings.add(createJob(i + 1));
         }
         
-        System.out.println("Next action :");
-        int action = scn.nextInt();
+        System.out.print("Next action: ");
+        int action = Integer.parseInt(scn.nextLine());
 
-        switch (action) {
-            case 0:
-                return;
-            
-            case 1:
-                user.useAttempt();
-                user.addNotifs("Successfully applied to position!");
-                System.out.println("New(1) Notification!");
-                break;
-            case 2:
-                user.useAttempt();
-                user.addNotifs("Successfully applied to position!");
-                System.out.println("New(1) Notification!");
-                break;
-            case 3:
-                user.useAttempt();
-                user.addNotifs("Successfully applied to position!");
-                System.out.println("New(1) Notification!");
-                break;
+        if (action == 0) return;
 
+        if (action >= 1 && action <= 3) {
+            String pickedJob = jobListings.get(action - 1);
+            user.useAttempt();
+            user.employed = true; // Update status
+            user.currentJob = pickedJob; // Track job title
+            user.addNotifs("Hired! You are now working as: " + pickedJob);
+            System.out.println("Application Successful! New(1) Notification!");
         }
     }
 
-    public void createJob(){
+    // Slightly modified to return the job title for the User object
+    public String createJob(int index){
         String[][] selectedJobs;
         String[] selectedCompanies;
 
         if(!user.hasDegree){
             selectedJobs = service;
             selectedCompanies = serviceCompanies;
-        }
-        else{
+        } else {
             selectedJobs = degreeToJobs.getOrDefault(user.degreeType, service);
             selectedCompanies = degreeToCompanies.getOrDefault(user.degreeType, serviceCompanies);
         }
@@ -318,8 +307,9 @@ public class Jobs {
         String company = selectedCompanies[rand.nextInt(selectedCompanies.length)];
         double salary = calcSalary(Integer.parseInt(selectedJobs[seniority][1]));
 
-        System.out.println("Position :" + company + " " + position + " - $" + df.format(salary));
-        System.out.println("");
+        String fullTitle = company + " " + position;
+        System.out.println(index + ". Position: " + fullTitle + " - $" + df.format(salary));
+        return fullTitle;
     }
 
     public int findPosition(int yearsWorked){

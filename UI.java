@@ -80,7 +80,6 @@ public class UI
 
         System.out.println();
         for (String line : jobs) {
-            // Using the Cyan color code to match the previous ones
             System.out.println("\u001B[36m" + line + "\u001B[0m");
         }
         System.out.println();

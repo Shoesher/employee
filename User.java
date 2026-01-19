@@ -51,9 +51,11 @@ public class User{
 
     public void changeStatus(boolean isEmployed){
         employed = isEmployed;
-        System.out.println("New(1) Notification!");
-        String termination = "\nJob successfully terminated.";
-        addNotifs(termination);
+        if(!isEmployed) {
+            currentJob = "None";
+            System.out.println("New(1) Notification!");
+            addNotifs("Job successfully terminated.");
+        }
     }
 
     public void addNotifs(String message){
