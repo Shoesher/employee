@@ -13,6 +13,8 @@ public class User{
     int yearsWorked;
     String[] userSkills = new String[3];
     boolean employed;
+    String currentJob;
+    int attempts = 3;
     
     //Objects
     private Scanner scn = new Scanner(System.in);
@@ -62,5 +64,9 @@ public class User{
             System.out.println("An error occurred while reading the file: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public void useAttempt(){
+        attempts -= 1;
     }
 }

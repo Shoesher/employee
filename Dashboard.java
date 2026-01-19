@@ -8,11 +8,6 @@ public class Dashboard {
     private UI ui = new UI();
     private User user = new User();
     private Scanner scn = new Scanner(System.in);
-    private int attempts = 3;
-
-    public Dashboard(int setAttempts){
-        this.attempts = setAttempts;
-    }
 
     public Dashboard(){
         

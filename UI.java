@@ -68,6 +68,23 @@ public class UI
 
         System.out.println();
     }
+
+    public void job(){
+        String[] jobs = {
+            "       _       _         ",
+            "      | | ___ | |__  ___ ",
+            "   _  | |/ _ \\| '_ \\/ __|",
+            "  | |_| | (_) | |_) \\__ \\",
+            "   \\___/ \\___/|_.__/|___/"
+        };
+
+        System.out.println();
+        for (String line : jobs) {
+            // Using the Cyan color code to match the previous ones
+            System.out.println("\u001B[36m" + line + "\u001B[0m");
+        }
+        System.out.println();
+    }
     
     public void divider(){
         for(int j = 0; j < 2; j++){
