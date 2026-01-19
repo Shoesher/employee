@@ -1,15 +1,22 @@
 import java.util.Random;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class Jobs {
     private UI ui = new UI();
     private User user = new User();
     private Random rand = new Random();
+    private Scanner scn = new Scanner(System.in);
+    DecimalFormat df = new DecimalFormat("#.00"); 
     String position = user.degreeType;
-    //String[] jobTypes = {"Engineering", "Hospitality", "Healthcare", "Finance", "IT", "Service", "Trades", "Transportation", "Administration"};
 
     //Positions, base salaries and companies
+    Map<String, String[][]> degreeToJobs = new HashMap<>();
+    Map<String, String[]> degreeToCompanies = new HashMap<>();
+
     String[][] engineering = {
         {"Engineering Intern", "45000"},
         {"Junior Engineer", "65000"},
@@ -131,11 +138,33 @@ public class Jobs {
     String[] hospitalityCompanies = {"Air Canada", "West Hospitality", "Marriot", "Hilton", "Wyndham", "Fairmont", "Ritz-Carlton", "Sheraton"};
     String[] healthcareCompanies = {"UHN", "SickKids", "Toronto General", "Humber River", "Sunnybrook", "Mount Sinai", "Toronto Western", "North York"};
     String[] tradesCompanies = {"EllisDon", "PLC", "Aecon", "Ledcor", "Ainsworth", "Modern Niagara", "Graham Construction", "Black & McDonald"};
-    String[] transformationCompanies = {"TTC", "GO Transit", "Purolator", "Viva", "MiWay", "Zum", "UP Express", "Coach Canada"};
+    String[] transportationCompanies = {"TTC", "GO Transit", "Purolator", "Viva", "MiWay", "Zum", "UP Express", "Coach Canada"};
     String[] administrationCompanies = {"Service Canada", "Service Ontario", "CRA", "IRCC", "PSPC", "CMHC", "Canada Post", "Brookfield"};
     String[] serviceCompanies = {"Loblaws", "Metro", "Canadian Tire", "No Frills", "Sobeys", "Best Buy", "Food Basics", "Shoppers"};
     String[] itCompanies = {"Shopify", "BlackBerry", "Kinaxis", "CGI", "Rogers", "Bell", "Telus", "1Password"};
     String[] financeCompanies = {"TD", "CIBC", "RBC", "Scotiabank", "BMO", "HSBC", "Tangerine", "Simplii"};
+
+    public Jobs(){
+        degreeToJobs.put("engineering", engineering);
+        degreeToJobs.put("hospitality", hospitality);
+        degreeToJobs.put("healthcare", healthcare);
+        degreeToJobs.put("trades", trades);
+        degreeToJobs.put("transportation", transportation);
+        degreeToJobs.put("administration", administration);
+        degreeToJobs.put("it", it);
+        degreeToJobs.put("finance", finance);
+        degreeToJobs.put("service", service);
+
+        degreeToCompanies.put("engineering", engineeringCompanies);
+        degreeToCompanies.put("healthcare", healthcareCompanies);
+        degreeToCompanies.put("hospitality", hospitalityCompanies);
+        degreeToCompanies.put("service", serviceCompanies);
+        degreeToCompanies.put("trades", tradesCompanies);
+        degreeToCompanies.put("administration", administrationCompanies);
+        degreeToCompanies.put("finance", financeCompanies);
+        degreeToCompanies.put("transportation", transportationCompanies);
+        degreeToCompanies.put("it", itCompanies);
+    }
 
     //Calculate Salary
     private double calcSalary(int originalSalary){
@@ -241,9 +270,66 @@ public class Jobs {
         System.out.println("Enter 3. to apply for position 3");
         System.out.println("Enter 0. to return to the dashboard");
 
-        //load 3 jobs
-        //handle user input
+        for(int i=0; i < 3; i++){
+            createJob();
+        }
+        
+        System.out.println("Next action :");
+        int action = scn.nextInt();
+
+        switch (action) {
+            case 0:
+                return;
+            
+            case 1:
+                user.useAttempt();
+                user.addNotifs("Successfully applied to position!");
+                System.out.println("New(1) Notification!");
+                break;
+            case 2:
+                user.useAttempt();
+                user.addNotifs("Successfully applied to position!");
+                System.out.println("New(1) Notification!");
+                break;
+            case 3:
+                user.useAttempt();
+                user.addNotifs("Successfully applied to position!");
+                System.out.println("New(1) Notification!");
+                break;
+
+        }
     }
 
+    public void createJob(){
+        String[][] selectedJobs;
+        String[] selectedCompanies;
 
+        if(!user.hasDegree){
+            selectedJobs = service;
+            selectedCompanies = serviceCompanies;
+        }
+        else{
+            selectedJobs = degreeToJobs.getOrDefault(user.degreeType, service);
+            selectedCompanies = degreeToCompanies.getOrDefault(user.degreeType, serviceCompanies);
+        }
+
+        int seniority = findPosition(user.yearsWorked);
+        String position = selectedJobs[seniority][0];
+        String company = selectedCompanies[rand.nextInt(selectedCompanies.length)];
+        double salary = calcSalary(Integer.parseInt(selectedJobs[seniority][1]));
+
+        System.out.println("Position :" + company + " " + position + " - $" + df.format(salary));
+        System.out.println("");
+    }
+
+    public int findPosition(int yearsWorked){
+        int pos = 0;
+        if(yearsWorked > 5){
+            pos = rand.nextInt(4,10);
+        }
+        else{
+            pos = rand.nextInt(0,3);
+        }
+        return pos;
+    }
 }

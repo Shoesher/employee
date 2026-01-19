@@ -8,6 +8,7 @@ public class Dashboard {
     private UI ui = new UI();
     private User user = new User();
     private Scanner scn = new Scanner(System.in);
+    private Jobs job = new Jobs();
 
     public Dashboard(){
         
@@ -25,7 +26,7 @@ public class Dashboard {
 
         switch(action){
             case 1:
-                System.exit(0); //replace with job code
+                job.loadJobs();
                 break;
             case 2:
                 readNotifs();

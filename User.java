@@ -35,8 +35,9 @@ public class User{
         System.out.println("Do you have any degrees/certifications (y/n):");
         String degReply = scn.nextLine();
         if(degReply.toLowerCase().equals("y")){
+            hasDegree = true;
             System.out.println("In which field did you obtain this degree/certification :");
-            degreeType = scn.nextLine();
+            degreeType = scn.nextLine().toLowerCase();
         }
         System.out.println("How many prior years of work expierence do you have? :");
         yearsWorked = Integer.parseInt(scn.nextLine());
@@ -55,7 +56,7 @@ public class User{
         addNotifs(termination);
     }
 
-        public void addNotifs(String message){
+    public void addNotifs(String message){
         Path filePath = Paths.get("notifications.txt"); 
 
         try {
