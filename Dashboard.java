@@ -6,12 +6,13 @@ import java.nio.file.Paths;
 
 public class Dashboard {
     private UI ui = new UI();
-    private User user = new User();
+    private User user;
     private Scanner scn = new Scanner(System.in);
-    private Jobs job = new Jobs();
+    private Jobs job;
 
-    public Dashboard(){
-        
+    public Dashboard(User user){
+        this.user = user;
+        this.job = new Jobs(user);
     }
 
     public void appManager(){

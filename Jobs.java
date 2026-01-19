@@ -7,11 +7,10 @@ import java.text.DecimalFormat;
 
 public class Jobs {
     private UI ui = new UI();
-    private User user = new User();
+    private User user;
     private Random rand = new Random();
     private Scanner scn = new Scanner(System.in);
     DecimalFormat df = new DecimalFormat("#.00"); 
-    String position = user.degreeType;
 
     //Positions, base salaries and companies
     Map<String, String[][]> degreeToJobs = new HashMap<>();
@@ -144,7 +143,8 @@ public class Jobs {
     String[] itCompanies = {"Shopify", "BlackBerry", "Kinaxis", "CGI", "Rogers", "Bell", "Telus", "1Password"};
     String[] financeCompanies = {"TD", "CIBC", "RBC", "Scotiabank", "BMO", "HSBC", "Tangerine", "Simplii"};
 
-    public Jobs(){
+    public Jobs(User user){
+        this.user = user;
         degreeToJobs.put("engineering", engineering);
         degreeToJobs.put("hospitality", hospitality);
         degreeToJobs.put("healthcare", healthcare);

@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class User{
     //User Attributes
     String username;
-    boolean hasDegree;
-    String degreeType;
+    boolean hasDegree = false;
+    String degreeType = "Temp";
     int yearsWorked;
     String[] userSkills = new String[3];
     boolean employed;
