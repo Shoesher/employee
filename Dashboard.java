@@ -32,7 +32,6 @@ public class Dashboard {
 
             switch(action){
                 case 1:
-                    // This now returns here after the job menu is finished
                     job.loadJobs();
                     break;
                 case 2:

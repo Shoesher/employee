@@ -265,12 +265,10 @@ public class Jobs {
         ui.divider();
         ui.job();
         
-        // We store the jobs generated so we can "pick" one
         ArrayList<String> jobListings = new ArrayList<>();
         
         System.out.println("0. Return to Dashboard");
         for(int i=0; i < 3; i++){
-            // Updated createJob to return the string so we can track what the user picked
             jobListings.add(createJob(i + 1));
         }
         
@@ -282,14 +280,13 @@ public class Jobs {
         if (action >= 1 && action <= 3) {
             String pickedJob = jobListings.get(action - 1);
             user.useAttempt();
-            user.employed = true; // Update status
-            user.currentJob = pickedJob; // Track job title
+            user.employed = true; 
+            user.currentJob = pickedJob; 
             user.addNotifs("Hired! You are now working as: " + pickedJob);
             System.out.println("Application Successful! New(1) Notification!");
         }
     }
 
-    // Slightly modified to return the job title for the User object
     public String createJob(int index){
         String[][] selectedJobs;
         String[] selectedCompanies;
