@@ -40,11 +40,9 @@ public class UI
             " |____/ \\___|\\__|\\__,_| .__/ |_|   |_|  \\___/|_| |_|_|\\___|",
             "                      |_|                                   "
         };
-
-        // Print the banner with a bit of spacing
+        
         System.out.println("\n");
         for (String line : banner) {
-            // Using cyan color code to match your image
             System.out.println("\u001B[36m" + line + "\u001B[0m");
         }
     }
@@ -57,12 +55,9 @@ public class UI
             " | |_| | (_| \\__ \\ | | | |_) | (_) | (_| | | | (_| \\__,_|",
             " |____/ \\__,_|___/_| |_|_.__/ \\___/ \\__,_|_|  \\__,_\\___/ "
         };
-
-        // Adding a newline for breathing room
         System.out.println();
 
         for (String line : dashboard) {
-            // \u001B[36m is the ANSI escape code for Cyan
             System.out.println("\u001B[36m" + line + "\u001B[0m");
         }
 

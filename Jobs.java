@@ -16,7 +16,7 @@ public class Jobs {
     Map<String, String[][]> degreeToJobs = new HashMap<>();
     Map<String, String[]> degreeToCompanies = new HashMap<>();
 
-    String[][] engineering = {
+    static String[][] engineering = {
         {"Engineering Intern", "45000"},
         {"Junior Engineer", "65000"},
         {"Design Engineer", "75000"},
@@ -29,7 +29,7 @@ public class Jobs {
         {"Director of Engineering", "190000"}
     };
 
-    String[][] hospitality = {
+    static String[][] hospitality = {
         {"Host", "32000"},
         {"Server", "35000"},
         {"Bartender", "38000"},
@@ -42,7 +42,7 @@ public class Jobs {
         {"Director of Hospitality", "140000"}
     };
 
-    String[][] healthcare = {
+    static String[][] healthcare = {
         {"Medical Assistant", "40000"},
         {"Licensed Practical Nurse", "55000"},
         {"Registered Nurse", "75000"},
@@ -55,7 +55,7 @@ public class Jobs {
         {"Chief Medical Officer", "350000"}
     };
 
-    String[][] finance = {
+    static String[][] finance = {
         {"Finance Intern", "45000"},
         {"Accounting Clerk", "55000"},
         {"Junior Financial Analyst", "65000"},
@@ -68,7 +68,7 @@ public class Jobs {
         {"Chief Financial Officer", "230000"}
     };
 
-    String[][] it = {
+    static String[][] it = {
         {"IT Support Technician", "50000"},
         {"Help Desk Analyst", "55000"},
         {"Junior Systems Administrator", "65000"},
@@ -81,7 +81,7 @@ public class Jobs {
         {"Chief Information Officer", "210000"}
     };
 
-    String[][] service = {
+    static String[][] service = {
         {"Customer Service Representative", "38000"},
         {"Senior Customer Service Representative", "42000"},
         {"Service Desk Specialist", "48000"},
@@ -94,7 +94,7 @@ public class Jobs {
         {"Vice President of Customer Experience", "165000"}
     };
 
-    String[][] trades = {
+    static String[][] trades = {
         {"Apprentice", "40000"},
         {"Journeyman", "55000"},
         {"Certified Tradesperson", "65000"},
@@ -107,7 +107,7 @@ public class Jobs {
         {"Director of Trades Operations", "175000"}
     };
 
-    String[][] transportation = {
+    static String[][] transportation = {
         {"Entry Driver", "42000"},
         {"Commercial Driver", "55000"},
         {"Senior Driver", "65000"},
@@ -120,7 +120,7 @@ public class Jobs {
         {"Director of Transportation", "185000"}
     };
 
-    String[][] administration = {
+    static String[][] administration = {
         {"Office Assistant", "38000"},
         {"Administrative Assistant", "45000"},
         {"Executive Assistant", "60000"},
@@ -133,15 +133,15 @@ public class Jobs {
         {"Chief Administrative Officer", "180000"}
     };
 
-    String[] engineeringCompanies = {"Siemens", "Bombardier", "Magna", "Tesla", "Magellon", "Celestica", "Rockwell", "Collins"};
-    String[] hospitalityCompanies = {"Air Canada", "West Hospitality", "Marriot", "Hilton", "Wyndham", "Fairmont", "Ritz-Carlton", "Sheraton"};
-    String[] healthcareCompanies = {"UHN", "SickKids", "Toronto General", "Humber River", "Sunnybrook", "Mount Sinai", "Toronto Western", "North York"};
-    String[] tradesCompanies = {"EllisDon", "PLC", "Aecon", "Ledcor", "Ainsworth", "Modern Niagara", "Graham Construction", "Black & McDonald"};
-    String[] transportationCompanies = {"TTC", "GO Transit", "Purolator", "Viva", "MiWay", "Zum", "UP Express", "Coach Canada"};
-    String[] administrationCompanies = {"Service Canada", "Service Ontario", "CRA", "IRCC", "PSPC", "CMHC", "Canada Post", "Brookfield"};
-    String[] serviceCompanies = {"Loblaws", "Metro", "Canadian Tire", "No Frills", "Sobeys", "Best Buy", "Food Basics", "Shoppers"};
-    String[] itCompanies = {"Shopify", "BlackBerry", "Kinaxis", "CGI", "Rogers", "Bell", "Telus", "1Password"};
-    String[] financeCompanies = {"TD", "CIBC", "RBC", "Scotiabank", "BMO", "HSBC", "Tangerine", "Simplii"};
+    static String[] engineeringCompanies = {"Siemens", "Bombardier", "Magna", "Tesla", "Magellon", "Celestica", "Rockwell", "Collins"};
+    static String[] hospitalityCompanies = {"Air Canada", "West Hospitality", "Marriot", "Hilton", "Wyndham", "Fairmont", "Ritz-Carlton", "Sheraton"};
+    static String[] healthcareCompanies = {"UHN", "SickKids", "Toronto General", "Humber River", "Sunnybrook", "Mount Sinai", "Toronto Western", "North York"};
+    static String[] tradesCompanies = {"EllisDon", "PLC", "Aecon", "Ledcor", "Ainsworth", "Modern Niagara", "Graham Construction", "Black & McDonald"};
+    static String[] transportationCompanies = {"TTC", "GO Transit", "Purolator", "Viva", "MiWay", "Zum", "UP Express", "Coach Canada"};
+    static String[] administrationCompanies = {"Service Canada", "Service Ontario", "CRA", "IRCC", "PSPC", "CMHC", "Canada Post", "Brookfield"};
+    static String[] serviceCompanies = {"Loblaws", "Metro", "Canadian Tire", "No Frills", "Sobeys", "Best Buy", "Food Basics", "Shoppers"};
+    static String[] itCompanies = {"Shopify", "BlackBerry", "Kinaxis", "CGI", "Rogers", "Bell", "Telus", "1Password"};
+    static String[] financeCompanies = {"TD", "CIBC", "RBC", "Scotiabank", "BMO", "HSBC", "Tangerine", "Simplii"};
 
     public Jobs(User user){
         this.user = user;
